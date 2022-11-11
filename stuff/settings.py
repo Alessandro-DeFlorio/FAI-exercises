@@ -11,7 +11,7 @@ class Settings:
         with open(path, "r") as f:
             self.content = json.load(f)["Settings"]
         
-        for arg in ("names_file", "titles_file", "main_txt_file"):
+        for arg in ("names_file", "titles_file", "main_txt_file", "urls_file"):
             self.content[arg] = mydir() + os_sep + self.content["directory"] + os_sep + self.content[arg]
 
     def __getitem__(self, __name: str) -> Any:
