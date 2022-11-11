@@ -2,7 +2,7 @@
     "Settings": {
         "directory": "files",
         "names_file": "ciao.txt",
-        "titles_file": "ciao.txt",
+        "titles_file": "titles.txt",
         "main_txt_file": "text.txt",
         
         "min_date": "1951-01-21T18:25:43.511Z",
