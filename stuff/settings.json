@@ -1,0 +1,17 @@
+{
+    "Settings": {
+        "directory": "files",
+        "names_file": "ciao.txt",
+        "titles_file": "ciao.txt",
+        "main_txt_file": "text.txt",
+        
+        "min_date": "1951-01-21T18:25:43.511Z",
+        "max_date": "2019-12-23T18:25:43.511Z",
+        "min_chapters": 1,
+        "max_chapters": 20,
+        "min_sections": 1,
+        "max_sections": 5,
+        "text_to_other_prob": 0.75,
+        "non_present_ref_prob": 0.1
+    }
+}
