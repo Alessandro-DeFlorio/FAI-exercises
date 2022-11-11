@@ -17,9 +17,9 @@ class VanillaRandomSelector:
 
 class RandomDocBodyGenerator:
     def __init__(self, path=settings["main_txt_file"], url_path=settings["urls_file"], sep=".",\
-        min_chap= settings["min_chapters"],\
-        max_chap=settings["max_chapters"],min_sections=settings["min_sections"],\
-        max_sections=settings["max_sections"],\
+        min_chap= settings["min_chapters"], max_chap=settings["max_chapters"],\
+        min_sections=settings["min_sections"], max_sections=settings["max_sections"],\
+        min_paragraphs=settings["min_paragraphs"], max_paragraphs=settings["max_paragraphs"],\
         min_sentences=settings["min_sentences"], max_sentences=settings["max_sentences"],\
          text_prob=settings["text_to_other_prob"]) -> None:
 
@@ -30,6 +30,9 @@ class RandomDocBodyGenerator:
 
         self.min_chap = min_chap
         self.max_chap = max_chap
+
+        self.min_paragraphs = min_paragraphs
+        self.max_paragraphs = max_paragraphs
 
         self.min_sections = min_sections
         self.max_sections = max_sections
@@ -44,14 +47,24 @@ class RandomDocBodyGenerator:
         chapters = []
         for n in range(chapters_num):
             chapters.append(self.create_chapter())
-        return {"Document":chapters}
+        return {"DocumentBody":chapters}
 
     def create_chapter(self):
+
+        paragraphs_num = random.randint(self.min_paragraphs, self.max_paragraphs)
+        paragraphs = []
+        for m in range(paragraphs_num):
+            paragraphs.append(self.create_paragraph())
+        return {"Chapter" : {"Title" : self.get_random_sentence(), "Paragraphs" : paragraphs}}
+
+    def create_paragraph(self):
+        
         sections_num = random.randint(self.min_sections, self.max_sections)
-        sections = []
-        for m in range(sections_num):
+        sections =  []
+        for l in range(sections_num):
             sections.append(self.create_section())
-        return {"Chapter":sections}
+        return {"Paragraph" : {"Title" : self.get_random_sentence(), "Sections": sections}}
+
 
     def create_section(self):
         if random.random() <= self.text_prob:
@@ -67,6 +80,8 @@ class RandomDocBodyGenerator:
         url = random.choice(self.urls)
         return {"url": url}
 
+    def get_random_sentence(self):
+        return random.choice(self.sentences)
 if __name__ == "__main__":
     with open("ciro.json","w") as f:
         json.dump(RandomDocBodyGenerator().generate_random_document_body(), f, indent=1)

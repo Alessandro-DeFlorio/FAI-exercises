@@ -8,14 +8,20 @@
         
         "min_date": "1951-01-21T18:25:43.511Z",
         "max_date": "2019-12-23T18:25:43.511Z",
+
         "min_chapters": 1,
         "max_chapters": 20,
+
+        "min_paragraphs" : 1,
+        "max_paragraphs": 5,
+
         "min_sections": 1,
-        "max_sections": 10,
+        "max_sections": 50,
+
         "min_sentences": 1,
-        "max_sentences": 50,
+        "max_sentences": 10,
         
-        "text_to_other_prob": 0.8,
+        "text_to_other_prob": 0.9,
         "non_present_ref_prob": 0.1
     }
 }
